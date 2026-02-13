@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuvraj Valentine 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", cursive;
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: darkred;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+      animation: pop 1s ease;
+    }
+
+    @keyframes pop {
+      from {transform: scale(0.7); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 15px;
+      background: crimson;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: darkred;
+      transform: scale(1.05);
+    }
+
+    input {
+      padding: 12px;
+      width: 90%;
+      border-radius: 12px;
+      border: 2px solid pink;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    .naruto {
+      font-size: 1.4rem;
+      color: orange;
+      margin-top: 15px;
+      font-weight: bold;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%,100% {transform: translateY(0);}
+      50% {transform: translateY(-8px);}
+    }
+
+    .hinata {
+      font-size: 1.3rem;
+      color: purple;
+      font-weight: bold;
+    }
+
+    .finalmsg {
+      font-size: 1.3rem;
+      color: darkred;
+      line-height: 1.6;
+      padding: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Romantic Background Music -->
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="container">
+
+    <h1>💖 Naruto & Hinata Valentine 💖</h1>
+
+    <div class="card" id="startCard">
+      <p class="hinata">Hinata: Hello Yuvraj 👀❤️</p>
+      <p>Click karo… tumhare liye special questions hain 😳</p>
+      <button onclick="startQuestions()">Start 💌</button>
+    </div>
+
+    <div class="card" id="questionCard" style="display:none;">
+      <p class="hinata" id="questionText"></p>
+      <input type="text" id="answerInput" placeholder="Type your answer...">
+      <button onclick="nextQuestion()">Submit Answer 💖</button>
+
+      <p class="naruto" id="narutoReply"></p>
+    </div>
+
+    <div class="card" id="finalCard" style="display:none;">
+      <h1>💝 Final Surprise 💝</h1>
+      <p class="finalmsg">
+        pyaare babyy mere yuv 👀❤️ uummmm I LOVE YOU ❤️<br><br>
+
+        tumhara pyara sa nature bacchon wala mujhe bhout acha lagta 😭❤️<br>
+        tumhari caring aur efforts mujhe special feel karvate hain 🤌<br><br>
+
+        jitni comfortable main tumhare sath hun utni kisi ke sath nahi 😭❤️<br><br>
+
+        Thank you mere husband 👀❤️<br>
+        Happy Valentine Day 💖💖<br><br>
+
+        (Yuvraj, humra dil sirf tohare khatir dhadke la 😭😂❤️)<br><br>
+
+        mmmmmmwaaaaaaaaaahhhhh 😘😘
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    let questions = [
+      "Tumhare liye perfect love ka matlab kya hai? 💕",
+      "Agar tum apne special person ko ek line bol sako, toh kya bolte? 😳",
+      "Dream date choose karni ho toh mere sath karoge ya Riya ke sath? 👀❤️"
+    ];
+
+    let current = 0;
+
+    function startQuestions() {
+      document.getElementById("startCard").style.display = "none";
+      document.getElementById("questionCard").style.display = "block";
+      showQuestion();
+    }
+
+    function showQuestion() {
+      document.getElementById("questionText").innerText =
+        "Hinata: " + questions[current];
+      document.getElementById("narutoReply").innerText = "";
+      document.getElementById("answerInput").value = "";
+    }
+
+    function nextQuestion() {
+      let ans = document.getElementById("answerInput").value;
+
+      if(ans.trim() === "") {
+        alert("Answer likho na Yuvraj 😭❤️");
+        return;
+      }
+
+      // Naruto compliment after answer
+      document.getElementById("narutoReply").innerText =
+        "Naruto: WOW 😍👏 Kya answer diya tumne! Hinata blush kar rahi hai 💖";
+
+      setTimeout(() => {
+        current++;
+
+        if(current < questions.length) {
+          showQuestion();
+        } else {
+          document.getElementById("questionCard").style.display = "none";
+          document.getElementById("finalCard").style.display = "block";
+        }
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
